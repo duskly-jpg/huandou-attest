@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "huandou-attest",
+  "compatibility_date": "2026-10-22",
+  "main": "src/worker.js",
+  "minify": true,
+  "d1_databases": [
+    { "binding": "DB", "database_name": "huandou-attest-db", "database_id": "e8c49f7c-1f5a-49ca-bc22-b170e4848263" }
+  ],
+  "triggers": { "crons": ["30 3 * * *"] },
+  "routes": [
+    { "pattern": "attest.flaros.xyz", "custom_domain": true }
+  ],
+  "observability": { "enabled": true }
+}

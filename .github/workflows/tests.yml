@@ -1,0 +1,20 @@
+name: tests
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Node 单测（解析器/策略/真机链回归）
+        run: |
+          node test/run_tests.mjs
+          node test/run_policy.mjs
+          node test/run_real_chain.mjs
+      - name: Python DER 解析与 openssl 交叉验签
+        run: python3 test/test_attest_parse.py
