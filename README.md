@@ -3,6 +3,10 @@
 Cloudflare Workers 上实现的 Android Key Attestation 验证后端，为[幻豆浏览器客户端](https://github.com/duskly-jpg/huandou)的「设备可信链」提供云端接入校验。不依赖 Google Play Integrity（无 GMS 设备、无上架记录的场景下不可用），直接验证 TEE 签发的 Key Attestation 证书链。
 
 [![tests](https://github.com/duskly-jpg/huandou-attest/actions/workflows/tests.yml/badge.svg)](https://github.com/duskly-jpg/huandou-attest/actions/workflows/tests.yml)
+[![release](https://img.shields.io/github/v/release/duskly-jpg/huandou-attest)](https://github.com/duskly-jpg/huandou-attest/releases)
+[![license](https://img.shields.io/github/license/duskly-jpg/huandou-attest)](LICENSE)
+![tests](https://img.shields.io/badge/tests-58%20passing-brightgreen)
+![dependencies](https://img.shields.io/badge/dependencies-0%20npm-blue)
 
 ## 端点
 
