@@ -5,8 +5,8 @@ Cloudflare Workers 上实现的 Android Key Attestation 验证后端，为[幻�
 [![tests](https://github.com/duskly-jpg/huandou-attest/actions/workflows/tests.yml/badge.svg)](https://github.com/duskly-jpg/huandou-attest/actions/workflows/tests.yml)
 [![release](https://img.shields.io/github/v/release/duskly-jpg/huandou-attest)](https://github.com/duskly-jpg/huandou-attest/releases)
 [![license](https://img.shields.io/github/license/duskly-jpg/huandou-attest)](LICENSE)
-![tests](https://img.shields.io/badge/tests-58%20passing-brightgreen)
-![dependencies](https://img.shields.io/badge/dependencies-0%20npm-blue)
+[![tests](https://img.shields.io/badge/tests-58%20passing-brightgreen)](#测试)
+[![dependencies](https://img.shields.io/badge/dependencies-0%20npm-blue)](#部署)
 
 ## 端点
 
