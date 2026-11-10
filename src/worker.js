@@ -553,6 +553,8 @@ pre{font-size:11px;white-space:pre-wrap;word-break:break-all;background:#f8f5fd;
   <details id="r-detail"><summary>原始 JSON</summary><pre id="r-raw"></pre></details>
 </div>
 
+<a class="btn ghost" href="https://github.com/duskly-jpg/huandou/releases/download/v1.9.8/huandou-1.9.8.apk" style="text-decoration:none;text-align:center;margin-top:12px">📱 下载幻豆 App · v1.9.8</a>
+
 <div class="foot">🐾 幻豆 · attest.flaros.xyz</div>
 </div>
 <script>
