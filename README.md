@@ -51,11 +51,26 @@ bash test/run_bind.sh
 
 ```bash
 npm i -g wrangler
-wrangler d1 create huandou-attest-db      # id 填入 wrangler.jsonc
+wrangler d1 create huandou-attest-db      # 生成的 database_id 填入 wrangler.jsonc
+wrangler d1 execute huandou-attest-db --remote --file schema.sql   # 初始化表结构
 wrangler deploy
 ```
 
-敏感配置走 secrets（不入库）：`TRUSTED_ROOTS_JSON`（信任根，默认用内置 Google 双根）、`ATTEST_BIND_SECRET`（bind 签名密钥）。
+首次部署后访问 `/health` 确认存活，再跑一轮 `bash test/run_matrix.sh` 做端到端验收。
+
+### 环境变量与 Secrets
+
+| 名称 | 类型 | 必填 | 默认值 | 说明 |
+|---|---|---|---|---|
+| `TRUSTED_ROOTS_JSON` | Secret | 否 | 内置 Google 双根 | 信任根证书 PEM 数组（JSON 字符串），自定义 PKI 时覆盖；生产建议 `wrangler secret put` 注入 |
+| `ATTEST_BIND_SECRET` | Secret | **是** | — | `/v1/attest/bind` 的 HMAC-SHA256 签名密钥，未配置时 bind 端点返回 503 |
+| `MIN_VERSION_CODE` | 变量 | 否 | `48` | 允许通过验签的最低 App 版本号，旧版本直接拒 |
+| `EXPECTED_VERSION_CODE` | 变量 | 否 | 不启用 | 锁定单一版本号（强升版场景），设置后其他版本一律拒 |
+| `DB` | D1 binding | **是** | — | 绑定 `huandou-attest-db`，存 challenge 会话与设备凭据 |
+
+> Secret 与普通变量的区别：Secret 走 `wrangler secret put NAME`（写入后不可读取回显）；版本门控类变量可直接写进 `wrangler.jsonc` 的 `vars`。所有 Secret 均不落仓库、不进 `.dev.vars` 提交——本地开发用 `.dev.vars`（已被 gitignore）。
+
+**D1 免费档限额参考**：读 5M 行/天、写 100K 行/天。challenge 会话有 TTL 清理（每日 cron 03:30），正常流量下不会触顶；接入新客户端时留意 verify_step 每步都会写会话状态。
 
 ## 许可
 
