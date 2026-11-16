@@ -2,4 +2,16 @@
 .wrangler/
 node_modules/
 build/
+
+# 签名材料与机密（任何情况下不入库）
+.env
+*.key
+*.pem
+*.p12
+*.jks
+*.keystore
+
+# 系统垃圾
+.DS_Store
+Thumbs.db
 *.log
